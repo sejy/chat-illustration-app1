@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p{
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        transform: translateY(-50%);
+    }
+    a[data-tooltip]{
+        position: relative;
+    }
+    a[data-tooltip]::before,
+    a[data-tooltip]::after{
+        content: '';
+        position: absolute;
+        display: block;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        pointer-events: none;
+    }
+    a[data-tooltip]:hover::before,
+    a[data-tooltip]:hover::after{
+        opacity: 1;
+        
+    }
+    a[data-tooltip]::after{
+        border-left: solid 6px transparent;
+        border-top: solid 6px blue;
+        border-right: solid 6px transparent;
+        height: 0;
+        width: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -50%;
+    }
+    a[data-tooltip]::before{
+        content: attr(data-tooltip);
+        background-color: blue;
+        color: white;
+        left: 50%;
+        transform: translateX(-50%);
+        top:-210%;
+        white-space: nowrap;
+        padding: 6px;
+        border-radius: 6px;
+
+    }
+</style>
+<body>
+    <p>know more about me <a href="https://web.whatsapp.com/" data-tooltip="my whatsap contant">click me</a></p>
+</body>
+</html>
